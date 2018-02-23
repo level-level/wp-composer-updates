@@ -1,11 +1,14 @@
 {
     "name": "level-level/wp-composer-updates",
-    "bin": "["bin/level-level/wp-composer-updates/"]
-    "type": "wordpress-muplugin",
+    "description": "Updates plugins and commits them seperately to git",
+    "type": "library",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Level Level",
-            "homepage": "https://level-level.com"
-        },
+            "email": "info@level-level.com"
+        }
     ],
+    "require": {},
+    "bin": ["bin/level-level/wp-composer-updates/"],
 }
