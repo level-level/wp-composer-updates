@@ -10,5 +10,5 @@
         }
     ],
     "require": {},
-    "bin": ["bin/level-level/wp-composer-updates/"],
+    "bin": ["bin/level-level/wp-composer-updates/"]
 }
