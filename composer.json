@@ -1,0 +1,11 @@
+{
+    "name": "level-level/wp-composer-updates",
+    "bin": "["bin/level-level/wp-composer-updates/"]
+    "type": "wordpress-muplugin",
+    "authors": [
+        {
+            "name": "Level Level",
+            "homepage": "https://level-level.com"
+        },
+    ],
+}
