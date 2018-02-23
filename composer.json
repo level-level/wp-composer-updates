@@ -9,6 +9,5 @@
             "email": "info@level-level.com"
         }
     ],
-    "require": {},
-    "bin": ["bin/level-level/wp-composer-updates/"]
+    "require": {}
 }
