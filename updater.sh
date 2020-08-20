@@ -1,21 +1,26 @@
-ITER=1
+#!/bin/bash
 
-for plugin in $(composer outdated --direct -m);
+composer outdated --direct -m | while read line;
 do
-	Q=`expr $ITER % 2`
-    if [ $Q -eq 0 ]
-    then
-    	ITER=$(expr $ITER + 1)
-    	continue # Skip current version number
-    fi
-    Q=`expr $ITER % 3`
-    if [ $Q -eq 0 ]
-    then
-    	ITER=0
-    	continue # Skip available version number
-    fi
-    composer update "$plugin" &&
+	read -a arr <<< $line
+	plugin=${arr[0]}
+	
+	# Check if the line is actually for a package, and not an error.
+	if ! [[ "$plugin" == *"/"* ]]; then
+		continue;
+	fi
+
+	# Setup versions
+	current=${arr[1]}
+	latest=${arr[3]}
+
+	# If no latest version is available, skip it
+	if [[ -z $latest ]]; then
+		continue
+	fi
+
+	echo "composer update ${plugin}"
+	composer require "$plugin" &&
     git add composer.lock &&
-    git commit -m "'update $plugin plugin'";
-    ITER=$(expr $ITER + 1)
+    git commit -m "'update ${plugin} [${current} => ${latest}]'";
 done;
